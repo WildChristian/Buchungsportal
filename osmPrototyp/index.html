@@ -1,0 +1,35 @@
+<!Doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>Eine OSM Karte mit Leaflet</title>
+    <link rel="stylesheet" type="text/css" href="https://informatik.hs-bremerhaven.de/leaflet/leaflet.css" />
+    <script type="text/javascript" src="https://informatik.hs-bremerhaven.de/leaflet/leaflet.js">
+    </script>
+  </head>
+    <body>
+      <div id="mapid" style="height: 700px; width: 800px"></div>
+  <script>
+    mymap= new L.Map('mapid');
+
+  var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  var osmAtt = '<a href="https://openstreetmap.org">OpenSreetMap</a>';
+  var args = {
+    minZoom: 8,
+    maxZoom : 19,
+    attribution: osmAtt
+  }
+  var osm = new L.TileLayer(osmUrl, args);
+  mymap.setView([53.54, 8.5835], 17);
+  mymap.addLayer(osm);
+  </script>
+
+  <script type="text/javascript" src="scripts/lauraMarker.js"></script>
+  <script type="text/javascript" src="scripts/fabianMarker.js"></script>
+  <script type="text/javascript" src="scripts/arndMarker.js"></script>
+  <script type="text/javascript" src="scripts/christianMarker.js"></script>
+  <script type="text/javascript" src="scripts/inesMarker.js"></script>
+    </body>
+</html>
+   
+

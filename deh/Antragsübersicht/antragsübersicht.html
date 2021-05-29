@@ -1,0 +1,36 @@
+<!Doctype html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Antragsübersicht</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+  <script>
+    function fertigGeladen(event){
+      let req = new XMLHttpRequest ();
+      req.onreadystatechange = function() {
+        if (req.readyState == 4 && req.status == 200) {
+          var str ="veranstaltung&datum&zeit&raum";
+          var arr = str.split("&");
+          console.log(arr[0]);
+          console.log(arr[1]);
+          console.log(arr[2]);
+          console.log(arr[3]);
+        };
+      }
+      req.open("GET", "sekretariat.php");
+    }
+window.onload =fertigGeladen;
+
+  </script>
+  </head>
+  <body>
+    <div class="container-sm">
+      <h1>Antragsübersicht</h1>
+      <ul class="list-group">
+        <li class="list-group-item">Verantsaltungg : <var id="veranstaltung"> </li>
+        <li class="list-group-item">Datum: <var id="datum"></li>
+        <li class="list-group-item">Zeit: <var id="zeit"></li>
+        <li class="list-group-item">Raum: <var id="raum"></li>
+  </body>
+</html>

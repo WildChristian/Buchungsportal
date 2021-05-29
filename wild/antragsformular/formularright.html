@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+        <script>
+ 
+
+     function antrag() {
+       let req = new XMLHttpRequest();
+       req.onreadystatechange = function() {
+       if (req.readyState == 4 && req.status == 200) {
+         if(req.responseText == 0){
+           document.getElementById("alarm").className = "alert alert-success";
+           document.getElementById("alarm").innerHTML = "Dein Antrag wurde gespeichert!";
+         }else if (req.responseText == -2){
+           document.getElementById("alarm").className = "alert alert-warning";
+           document.getElementById("alarm").innerHTML = "Leider ist zu diesem Zeitpunkt der Raum bereits gebucht! Wähle einen anderen.";
+         }else if(req.responseText == -1){
+           document.getElementById("alarm").className = "alert alert-warning"
+           document.getElementById("alarm").innerHTML = "Leider wurden nicht alle Pflichtfelder ausgefüllt!";
+         }
+      };
+      }
+      req.open("GET", "formularajax.php?veranstaltung=" + document.getElementById("veranstaltung").value+ "&datum="+   document.getElementById("datum").value + "&zeit="+  document.getElementById("zeit").value + "&raum=" +  document.getElementById("raum").value + "&notiz=" +  document.getElementById("notizen").value);
+      req.send();
+    }
+    </script>
+    <title>Antragsformular</title>
+  </head>
+  <body>
+  <div class="container-sm">
+    <h1>Antragsformular</h1>
+    <p>Bitte fülle diesen Antrag zum Buchen eines Raumes für Online-Lehre aus.<br> Mit "*" gekennzeichnete Felder sind Pflichtfelder.</p>
+    <form>
+ <div class="form-group">
+    <label for="veranstaltung">*Wähle die Art der Veranstaltung:</label>
+    <select class="form-control" id="veranstaltung">
+      <option value="uebung">Übung</option>
+      <option value="vorlesung">Vorlesung</option>
+      <option value="labor">Labor</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="datum">*Wähle hier das gewünschtes Datum:(Format: xx.xx.xxxx)</label>
+    <input type="email" class="form-control" id="datum" placeholder="z.B. 01.01.2020">
+  </div> 
+  <div class="form-group">
+    <label for="zeit">*Wähle hier die gewünschte Zeit:</label>
+    <select multiple class="form-control" id="zeit">
+      <option value="Block1">08:00 - 09:30 </option>
+      <option value="Block2">09:45 - 11:15</option>
+      <option value="Block3">11:30 - 13:00</option>
+      <option value="Block4">13:45 - 15:15</option>
+      <option value="Block5">15:30 - 15:45</option>
+    </select>
+  </div>
+    <div class="form-group">
+    <label for="raum">Wähle hier den gewünschten Raum:</label>
+    <select multiple class="form-control" id="raum">
+      <option value="01">Raum 01</option>
+      <option value="02">Raum 02</option>
+      <option value="03">Raum 03</option>
+   </select>
+  </div>
+  <div class="form-group">
+    <label for="notizen">Notizen:</label>
+    <input class="form-control" id="notizen">
+  </div>
+</form>
+<button onclick="antrag()" type="button" class="btn btn-primary btn-lg" >Antrag absenden</button>
+<br>
+<p> <div class="invisible""  ole="alert" id="alarm">
+
+</div></p>
+<button type="button" class="btn btn-secondary btn-lg btn-block"  >Hier geht es zurück zum Portal</button>
+
+  </div>
+  </body>
+
+</html>

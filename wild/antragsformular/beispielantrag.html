@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+        <script>
+     
+
+
+
+       function beispiel(event){
+           let req = new XMLHttpRequest();
+           req.onreadystatechange = function() {
+           if (req.readyState == 4 && req.status == 200) {
+                // const tmp = req.responseText;
+                // var values = tmp.split(' ');
+ 
+           };
+        }
+        req.open("GET", "beispiel.php");  // Hier muss es noch Variabel gemacht werden
+        req.send(); 
+        
+       
+        }
+
+       window.onload=beispiel;
+
+
+    </script>
+    <title>Antrag</title>
+  </head>
+  <body>
+  <div class="container-sm">
+    <h3>Antragsstatus ändern</h3>
+    <p> Bearbeite hier den Antrag von: <div id="name"></div> mit der Antragsnummer:  <div id="antragsnummer" ></div> Die folgenden Angaben wurden zum Antrag gemacht:</p> 
+    <div class="card" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+    <li class="list-group-item">Veranstaltung: <var id="veranstaltung"> </li>
+    <li class="list-group-item">Datum: <var id="datum"> </li>
+    <li class="list-group-item">Zeit: <var id="zeit">  </li>
+    <li class="list-group-item">Vorgeschlagener Raum:  <var id="raum"> </li>
+    <li class="list-group-item">Notiz:  <var id="notiz"> </li>
+    </div>
+    <br><p> Bearbeite im Folgenden Abschnitt den  Antrag. Beim Ablehnen des Antrags, gibt bitte eine Notiz als Hilfe zur einfachen Erstellung eines neuen Antrags an.
+    <form name="status" class="form-check" >
+      <fieldset>
+       <input class="form-check-input"  name="status" value="true" type="radio"> genehmigen <br>
+       <input class="form-check-input" name="status" value="false" type="radio" > ablehnen
+      </fieldset>
+    </form>
+    </p>
+  <div class="form-group">
+    <label for="notizen">Notizen:</label>
+    <input class="form-control" id="notizen">
+  </div>
+  <p>
+<button onclick="entscheidung()" type="button" class="btn btn-primary btn-lg" >Antrag absenden</button>
+  </p>
+
+
+<button type="button" class="btn btn-secondary btn-lg btn-block" id="button2" >Hier geht es zurück zum Portal</button>
+
+<p> <div class="invisible"  ole="alert" id="alarm">
+  </div>
+  </body>
+
+</html>
